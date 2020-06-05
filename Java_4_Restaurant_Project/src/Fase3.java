@@ -20,7 +20,7 @@ public class Fase3 {
 			
 			double dishPrice = getPrice(dishRequest); //retorna -1 si no existeix el plat demanat al menú
 			
-			if (dishPrice>0) {
+			if (dishPrice>=0) {
 				totalPrice += dishPrice;
 			}
 		}

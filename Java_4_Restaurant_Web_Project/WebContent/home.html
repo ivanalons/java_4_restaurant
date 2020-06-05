@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+	
+		<meta charset="UTF-8">
+		<title>Exercici Restaurant JavaScript</title>
+		
+	</head>
+	
+	<body>
+		
+		<p><b>FASE 2:</b></p>
+		
+		<p> Introdueix el nom i el preu dels 5 plats del menu: </p>
+		<p> <label>Plat 1:</label> <input name="menu" type="text" value=""/> 
+			<label>Preu 1:</label> <input name="dishPrice" type="text" value=""/>
+		</p>
+		<p> <label>Plat 2:</label> <input name="menu" type="text" value=""/> 
+			<label>Preu 2:</label> <input name="dishPrice" type="text" value=""/>
+		</p>
+		<p> <label>Plat 3:</label> <input name="menu" type="text" value=""/> 
+			<label>Preu 3:</label> <input name="dishPrice" type="text" value=""/>
+		</p>
+		<p> <label>Plat 4:</label> <input name="menu" type="text" value=""/> 
+			<label>Preu 4:</label> <input name="dishPrice" type="text" value=""/>
+		</p>
+		<p> <label>Plat 5:</label> <input name="menu" type="text" value=""/> 
+			<label>Preu 5:</label> <input name="dishPrice" type="text" value=""/>
+		</p>
+		
+		<p> <button id="button_createMenu">Crear Menu</button> </p>
+		
+		
+		<p><u>PLATS DEL MENU DISPONIBLES:</u></p>
+		<p id="fase2_menu"></p>
+		
+		<p><u>DEMANDA PLATS CLIENT:</u></p>		
+		<p id="fase2_customerRequest"></p>
+		
+		<p> 
+		    <input id="lastRequest" type="text" value=""/>
+		    <button id="button_addRequest">Demanar nou plat</button>
+		    <button id="button_removeAllRequests">Esborrar tots els plats demanats</button>
+		</p>		
+		
+		<p><b>FASE 3:</b></p>
+		<p> <button id="button_payment">Calcular Preu Total</button> </p>
+		<p><u>PREU TOTAL:</u></p>
+		
+		<p id="fase3"></p>
+		
+		
+		<script src="js/restaurant_fase1.js"></script>
+		<script src="js/restaurant_fase2.js"></script>
+		<script src="js/restaurant_fase3.js"></script>
+
+	</body>
+	
+</html>

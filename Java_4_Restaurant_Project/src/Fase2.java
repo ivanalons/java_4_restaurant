@@ -41,9 +41,9 @@ public class Fase2 {
 	
 	public static void showMenuDishes() {
 		
-		System.out.println("--------------");
-		System.out.println("MENU DEL DIA :");
-		System.out.println("--------------");
+		System.out.println("----------------");
+		System.out.println("PLATS DEL MENU :");
+		System.out.println("----------------");
 
 		for (int i = 0; i < Fase1.menu.length; i++) {
 			System.out.println("PLAT "+i+" : " + Fase1.menu[i]);
