@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Fase2 {
 
-	public static List<String> customerRequest = new ArrayList<>();
+	public static List<String> customerRequest = new ArrayList<>(); //contindrà els plats demanats pel client
 	
 	public static void execute() {
 				
@@ -12,14 +12,16 @@ public class Fase2 {
 		System.out.println("FASE 2");
 		System.out.println("------");
 
-		createMenuDishes();
+		createMenuDishes(); //crea el menú amb el nom i el preu de cada plat introduïts per l'usuari
 		
-		showMenuDishes();
+		showMenuDishes(); //mostra per pantalla els noms i preus de cada plat del menú
 		
-		askDishesToCustomer();
+		askDishesToCustomer(); //crea la demanda de plats del client introduïts per l'usuari
 		
 	}
 	
+	// Guarda als arrays de la classe Fase1 "menu" y "dishPrice" el nom i preu de cada plat introduït 
+	// per consola per part de l'usuari
 	public static void createMenuDishes() {
 		
 		System.out.println("-------------------------");
@@ -39,6 +41,7 @@ public class Fase2 {
 		//input.close(); //si s'invoca, al següent Scanner(System.in).nextLine() no funciona
 	}
 	
+	// Mostra per pantalla cada plat i el seu preu del menú corresponent als arrays "menu" i "dishPrice" de la classe Fase1
 	public static void showMenuDishes() {
 		
 		System.out.println("----------------");
@@ -52,6 +55,9 @@ public class Fase2 {
 		
 	}
 	
+	// Guarda a la llista global "customerRequest" de la classe Fase2, els plats demanats pel client que ha introduït
+	// l'usuari per consola
+	
 	public static void askDishesToCustomer() {
 		
 		System.out.println("----------------------");
@@ -61,11 +67,11 @@ public class Fase2 {
 		Scanner input = new Scanner(System.in);
 		boolean fi = false;
 		
-		while(fi==false) {
+		while(fi==false) { //continuar demanant plats mentre l'usuari no respongui per consola "0" quan se li pregunta si vol demanar més plats
 			
 			System.out.println("Quin plat vols menjar ?");
 			String dish = input.nextLine();
-			customerRequest.add(dish);
+			customerRequest.add(dish); //afegeix el plat demanat a la llista "customerRequest"
 			
 			System.out.println("Vols seguir demanant més plats? (1:Si / 0:No) :");
 			int askMore = input.nextInt();

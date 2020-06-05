@@ -16,7 +16,10 @@ public class Fase3 {
 		
 		List<String> listCustomerRequest = Fase2.customerRequest;
 		
-		for (String dishRequest : listCustomerRequest) {
+		// Es fa un recorregut dels plats demanats pel client i si existeixen al menú, 
+		// es suma el seu preu a la variable "totalPrice"
+		
+		for (String dishRequest : listCustomerRequest) { //
 			
 			double dishPrice = getPrice(dishRequest); //retorna -1 si no existeix el plat demanat al menú
 			
@@ -31,13 +34,16 @@ public class Fase3 {
 		
 		System.out.println("El preu total és: " + totalPrice);
 		
+		// Es calcula el nombre de billets en euros de cada tipus amb que haurà de pagar el client per cobrir el preu total
+		// i es mostra per pantalla aquesta informació
+		
 		calculateBillsCustomerPayment(totalPrice);
 		showBillsCustomerPayment();
 		
 	}
 	
 	// Consulta si el plat demanat per paràmetre existeix en el menú, i retorna el seu preu
-	// Si no existeix el plat demanat es mostra un missatge per pantalla i es retorna un preu negatiu
+	// Si no existeix el plat demanat es mostra un missatge per pantalla i es retorna un preu negatiu -1
 	public static double getPrice(String dishRequest) {
 		
 		String[] arrayMenuDishes = Fase1.menu;
@@ -46,23 +52,28 @@ public class Fase3 {
 		boolean dishFound = false;
 		int i=0;
 		
-		while(dishFound==false && i<arrayMenuDishes.length) {
+		while(dishFound==false && i<arrayMenuDishes.length) { 
+			//mentre no haguem recorregut tot l'array amb els plats del menu "arrayMenuDishes"
+			//i no s'hagi trobat el plat demanat "dishRequest" a l'array "arrayMenuDishes" continuar el bucle while
 			
-			dishFound = dishRequest.toLowerCase().equals(arrayMenuDishes[i].toLowerCase());
+			//comparem els Strings plat demanat amb plat del menu indepentment de si tenen caràcters en minúscula o majúscula
+			dishFound = dishRequest.toLowerCase().equals(arrayMenuDishes[i].toLowerCase()); 
 			if (dishFound==false) i++;
 			
 		}
 		
-		if (dishFound==true) { //plat existeix en el menu
+		if (dishFound==true) { // plat existeix en el menu
 			dishPrice = Fase1.dishPrice[i];
-		} else { //fi==false : plat NO existeix en el menu
-			System.out.println("El plat demanat \"" + dishRequest +"\" no existeix!!!");
+		} else { // plat NO existeix en el menu
+			System.out.println("El plat demanat \"" + dishRequest +"\" no existeix!!!"); 
 		}
 			
 		return dishPrice;
 	}
 	
 	
+	// Es calcula quants billets en euros de cada tipus caldran entregar per a pagar el preu total de la compra amb els plats demanats
+	// i es guarda la informació a cada variable corresponent
 	public static void calculateBillsCustomerPayment(double doubletotalPrice) {
 		
 		double rest = 0;
@@ -88,6 +99,8 @@ public class Fase3 {
 		if(rest>0) fiveEuros = fiveEuros + 1;
 	}
 
+	// Es mostra per pantalla quants billets en euros de cada tipus caldran entregar per a pagar el preu total de la compra 
+	// amb els plats demanats, a partir dels valors de les variables corresponents
 	public static void showBillsCustomerPayment() {
 		
 		System.out.println("EL CLIENT HA DE PAGAR AMB AQUESTS BILLETS:");

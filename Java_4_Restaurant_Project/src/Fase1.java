@@ -7,8 +7,8 @@ public class Fase1 {
 	// d'aquest objecte per a manipular la informació de l'exercici. 
 	// Però oriento el codi a solucionar només el que es demana a l'exercici
 	
-	public static String[] menu = new String[5];
+	public static String[] menu = new String[5]; //conté els plats del menú introduïts per l'usuari
 	
-	public static double[] dishPrice = new double[5];
+	public static double[] dishPrice = new double[5]; //conté els preus dels plats del menú introduïts per l'usuari
 	
 }
