@@ -39,6 +39,9 @@ function pressButton_payment(){
 	resultat += "El preu total &eacute;s: " + totalPrice;
 	resultat += "<br>";
 	
+	//Si no s'han instanciat els arrays arrayMenu i arrayDishPrice el preu total és cero
+	if (totalPrice==0) window.alert("Segur que has premut el botó 'CREAR MENU' de l'apartat 'FASE 2'?");
+	
 	// Es calcula el nombre de billets en euros de cada tipus amb que haurà de pagar el client per cobrir el preu total
 	// i es mostra per pantalla aquesta informació
 	
