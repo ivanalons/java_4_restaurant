@@ -15,19 +15,22 @@ var listCustomerRequest = []; //restaurant_fase2.js
 var totalPrice = 0;
 var fiveEuros=0, tenEuros=0, twentyEuros=0, fiftyEuros=0, oneHundredEuros=0,twoHundredEuros=0;
 
-//*********************
+//****************************
 
 function pressButton_payment(){
 	
 	totalPrice = 0;
 	let resultat = "";
+	
+	// Es fa un recorregut dels plats demanats pel client i si existeixen al menú, 
+	// es suma el seu preu a la variable "totalPrice"
 	for (var dishRequest of listCustomerRequest) {
 		
 		dishPrice = getPrice(dishRequest); //retorna -1 si no existeix el plat demanat al menú
 		
 		if (dishPrice>=0) {
 			totalPrice += dishPrice;
-		}else{
+		}else{ // Si no existeix el plat demanat es mostra un missatge per pantalla
 			resultat += "El plat demanat \"" + dishRequest +"\" no existeix!!!";
 			resultat += "<br>";
 		}
@@ -35,6 +38,9 @@ function pressButton_payment(){
 
 	resultat += "El preu total &eacute;s: " + totalPrice;
 	resultat += "<br>";
+	
+	// Es calcula el nombre de billets en euros de cada tipus amb que haurà de pagar el client per cobrir el preu total
+	// i es mostra per pantalla aquesta informació
 	
 	calculateBillsCustomerPayment(totalPrice);
 	resultat += showBillsCustomerPayment();
@@ -44,7 +50,7 @@ function pressButton_payment(){
 
 
 //Consulta si el plat demanat per paràmetre existeix en el menú, i retorna el seu preu
-// Si no existeix el plat demanat es mostra un missatge per pantalla i es retorna un preu negatiu
+// Si no existeix el plat, es retorna un preu negatiu -1
 function getPrice(dishRequest) {
 	
 	let dishPrice = -1;
@@ -52,8 +58,12 @@ function getPrice(dishRequest) {
 	let i=0;
 	
 	while(dishFound==false && i<arrayMenu.length) {
+		//mentre no haguem recorregut tot l'array amb els plats del menu "arrayMenu"
+		//i no s'hagi trobat el plat demanat "dishRequest" a l'array "arrayMenu" continuar el bucle while
 		
-		dishFound = dishRequest.toLowerCase()===arrayMenu[i].toLowerCase();
+		//comparem els Strings plat demanat amb plat del menu indepentment de si tenen caràcters en minúscula o majúscula
+		dishFound = dishRequest.toLowerCase()===arrayMenu[i].toLowerCase(); 
+		
 		if (dishFound==false) i++;
 		
 	}
@@ -62,12 +72,13 @@ function getPrice(dishRequest) {
 		dishPrice = arrayDishPrice[i];
 	} 
 	
-	//si el plat "dishRequest" no existeix "dishPrice" té valor -1
+	//si el plat "dishRequest" no existeix, "dishPrice" té valor -1
 	
 	return dishPrice;
 }
 
-
+// Es calcula quants billets en euros de cada tipus caldran entregar per a pagar el preu total de la compra amb els plats demanats
+// i es guarda la informació a cada variable corresponent
 function calculateBillsCustomerPayment(p_totalPrice){
 	
 	var rest = 0;
@@ -94,22 +105,24 @@ function calculateBillsCustomerPayment(p_totalPrice){
 	
 }
 
+//Es mostra per "pantalla" (variable resultat) quants billets en euros de cada tipus caldran entregar per a pagar 
+// el preu total de la compra amb els plats demanats, a partir dels valors de les variables corresponents
 function showBillsCustomerPayment(){
 	let resultat = "";
 	
 	resultat += "EL CLIENT HA DE PAGAR AMB AQUESTS BILLETS:";
 	resultat += "<br>";
-	resultat += "Billets 200 euros: "+ twoHundredEuros;
+	resultat += twoHundredEuros + " billets 200 euros. ";
 	resultat += "<br>";
-	resultat += "Billets 100 euros: "+ oneHundredEuros;
+	resultat += oneHundredEuros + " billets 100 euros. ";
 	resultat += "<br>";
-	resultat +="Billets 50 euros: "+ fiftyEuros;
+	resultat += fiftyEuros + " billets 50 euros.";
 	resultat += "<br>";
-	resultat +="Billets 20 euros: "+ twentyEuros;
+	resultat += twentyEuros + " billets 20 euros. ";
 	resultat += "<br>";
-	resultat +="Billets 10 euros: "+ tenEuros;
+	resultat += tenEuros + " billets 10 euros. " ;
 	resultat += "<br>";
-	resultat +="Billets 5 euros: "+ fiveEuros;
+	resultat += fiveEuros + " billets 5 euros. " ;
 	resultat += "<br>";
 	
 	return resultat;

@@ -68,6 +68,8 @@ public class Fase3 {
 			System.out.println("El plat demanat \"" + dishRequest +"\" no existeix!!!"); 
 		}
 			
+		//si el plat "dishRequest" no existeix, "dishPrice" té valor -1
+		
 		return dishPrice;
 	}
 	
@@ -104,12 +106,12 @@ public class Fase3 {
 	public static void showBillsCustomerPayment() {
 		
 		System.out.println("EL CLIENT HA DE PAGAR AMB AQUESTS BILLETS:");
-		System.out.println("Billets 200 euros: "+ twoHundredEuros);
-		System.out.println("Billets 100 euros: "+ oneHundredEuros);
-		System.out.println("Billets 50 euros: "+ fiftyEuros);
-		System.out.println("Billets 20 euros: "+ twentyEuros);
-		System.out.println("Billets 10 euros: "+ tenEuros);
-		System.out.println("Billets 5 euros: "+ fiveEuros);
+		System.out.println(twoHundredEuros+ " billets 200 euros." );
+		System.out.println(oneHundredEuros+" billets 100 euros." );
+		System.out.println(fiftyEuros+" billets 50 euros. ");
+		System.out.println(twentyEuros+" billets 20 euros. " );
+		System.out.println(tenEuros+" billets 10 euros. " );
+		System.out.println(fiveEuros+ " billets 5 euros. " );
 
 	}
 
