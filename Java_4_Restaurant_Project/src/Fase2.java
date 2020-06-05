@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,17 +30,34 @@ public class Fase2 {
 		System.out.println("-------------------------");
 
 		Scanner input = new Scanner(System.in);
+		boolean numberFormat = false;
 		
 		for (int i = 0; i < Fase1.menu.length; i++) {
 			System.out.println("Introdueix el NOM del plat número "+i+" :");
 			Fase1.menu[i] = input.nextLine();
 			System.out.println("Introdueix el PREU en euros del plat número "+i+" :");
-			Fase1.dishPrice[i] = input.nextDouble();
+			
+			// Demana el preu per consola. Si no és un número vàlid torna a demanar preu per consola.
+			numberFormat = false;
+			while(numberFormat==false) {
+				try {
+					Fase1.dishPrice[i] = input.nextDouble();
+					numberFormat=true;
+					
+				}catch(InputMismatchException e) {
+					numberFormat=false;
+					System.out.println("El preu ha de ser un número vàlid. Prova a introduir el preu de nou:");
+					input.nextLine();
+
+				}
+			}
+			
 			input.nextLine();
 		}
 		
 		//input.close(); //si s'invoca, al següent Scanner(System.in).nextLine() no funciona
 	}
+	
 	
 	// Mostra per pantalla cada plat i el seu preu del menú corresponent als arrays "menu" i "dishPrice" de la classe Fase1
 	public static void showMenuDishes() {

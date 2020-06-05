@@ -32,7 +32,7 @@ public class Fase3 {
 		System.out.println("PREU TOTAL");
 		System.out.println("----------");
 		
-		System.out.println("El preu total és: " + totalPrice);
+		System.out.printf("El preu total és: %.2f \n", totalPrice);
 		
 		// Es calcula el nombre de billets en euros de cada tipus amb que haurà de pagar el client per cobrir el preu total
 		// i es mostra per pantalla aquesta informació
