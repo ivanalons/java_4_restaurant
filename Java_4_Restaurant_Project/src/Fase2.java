@@ -30,27 +30,13 @@ public class Fase2 {
 		System.out.println("-------------------------");
 
 		Scanner input = new Scanner(System.in);
-		boolean numberFormat = false;
 		
 		for (int i = 0; i < Fase1.menu.length; i++) {
 			System.out.println("Introdueix el NOM del plat número "+i+" :");
 			Fase1.menu[i] = input.nextLine();
 			System.out.println("Introdueix el PREU en euros del plat número "+i+" :");
 			
-			// Demana el preu per consola. Si no és un número vàlid torna a demanar preu per consola.
-			numberFormat = false;
-			while(numberFormat==false) {
-				try {
-					Fase1.dishPrice[i] = input.nextDouble();
-					numberFormat=true;
-					
-				}catch(InputMismatchException e) {
-					numberFormat=false;
-					System.out.println("El preu ha de ser un número vàlid. Prova a introduir el preu de nou:");
-					input.nextLine();
-
-				}
-			}
+			Fase1.dishPrice[i] = getInputDishPrice(input);
 			
 			input.nextLine();
 		}
@@ -92,7 +78,7 @@ public class Fase2 {
 			customerRequest.add(dish); //afegeix el plat demanat a la llista "customerRequest"
 			
 			System.out.println("Vols seguir demanant més plats? (1:Si / 0:No) :");
-			int askMore = input.nextInt();
+			int askMore = getInputAskMoreDishes(input);
 			input.nextLine();
 			
 			fi = (askMore==0);
@@ -100,4 +86,51 @@ public class Fase2 {
 		
 		input.close();
 	}
+	
+	// Demana el preu per consola. Si no és un número vàlid torna a demanar preu per consola. 
+	// Retorna el preu introduït per consola.
+	public static double getInputDishPrice(Scanner input) {
+		boolean numberFormat = false;
+		double doubleDishPrice = 0;
+		
+		while(numberFormat==false) {
+			try {
+				doubleDishPrice = input.nextDouble();
+				numberFormat=true;
+				
+			}catch(InputMismatchException e) {
+				numberFormat=false;
+				System.out.println("El preu ha de ser un número vàlid. Prova a introduir el preu de nou:");
+				input.nextLine();
+
+			}
+		}
+		return doubleDishPrice;
+	}
+	
+	// Es pregunta per consola si el client vol seguir demanant plats o no. Si no respon 0 o 1 se li torna a preguntar.
+	// Retorna la resposta introduïda per l'usuari (0:No / 1:Si). 
+	public static int getInputAskMoreDishes(Scanner input) {
+		boolean numberFormat = false;
+		int answer = 0;
+
+		while (numberFormat == false) {
+			try {
+				answer = input.nextInt();
+				if (answer==0 || answer==1) {
+					numberFormat = true;
+				}else {
+					System.out.println("Has d'introduïr '1' si vols continuar demanant plats o '0' si vols finalitzar la demanda");
+					input.nextLine();
+				}
+
+			} catch (InputMismatchException e) {
+				numberFormat = false;
+				System.out.println("Has d'introduïr '1' si vols continuar demanant plats o '0' si vols finalitzar la demanda");
+				input.nextLine();
+			}
+		}
+		return answer;
+	}
+	
 }
