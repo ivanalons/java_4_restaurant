@@ -87,6 +87,7 @@ public class Fase2 {
 		input.close();
 	}
 	
+	// problemes Egit
 	// Demana el preu per consola. Si no és un número vàlid torna a demanar preu per consola. 
 	// Retorna el preu introduït per consola.
 	public static double getInputDishPrice(Scanner input) {
@@ -108,6 +109,7 @@ public class Fase2 {
 		return doubleDishPrice;
 	}
 	
+	// problemes Egit
 	// Es pregunta per consola si el client vol seguir demanant plats o no. Si no respon 0 o 1 se li torna a preguntar.
 	// Retorna la resposta introduïda per l'usuari (0:No / 1:Si). 
 	public static int getInputAskMoreDishes(Scanner input) {
